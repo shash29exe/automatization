@@ -1,0 +1,2 @@
+# automatization
+Автоматизация
