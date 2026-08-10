@@ -56,7 +56,7 @@ Write-Host "Complete!" -ForegroundColor Green
 
 
 Write-Host "Installing VLC..." -ForegroundColor Cyan
-Start-Process -FilePath ".\vlc.exe" -ArgumentList "/S" -Wait
+Start-Process -FilePath ".\vlc.exe" -Wait
 Write-Host "Complete!" -ForegroundColor Green
 
 
