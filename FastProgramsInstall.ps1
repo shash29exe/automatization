@@ -42,6 +42,7 @@ Invoke-WebRequest -Uri "https://download.mozilla.org/?product=firefox-latest&os=
 Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?LinkId=2099617" -OutFile "webview2.exe"
 Invoke-WebRequest -Uri "https://c2rsetup.officeapps.live.com/c2r/download.aspx?ProductreleaseID=Home2024Retail&platform=x64&language=ru-ru&version=O16GA" -OutFile "MSOffice.exe"
 Invoke-WebRequest -Uri "https://www.glenn.delahoy.com/downloads/sdio/SDIO_1.18.0.830.zip" -OutFile "SDIO.zip"
+Write-Host "Complete!" -ForegroundColor Green
 
 Write-Host "extracting SDIO..." -ForegroundColor Cyan
 Expand-Archive -Path "SDIO.zip" -DestinationPath "$env:USERPROFILE\Downloads\SDIO" -Force
