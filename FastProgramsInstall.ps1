@@ -30,7 +30,7 @@ Remove-Item "$([Environment]::GetFolderPath('CommonStartMenu'))\Microsoft Edge.l
 Write-Host "Complete!" -ForegroundColor Green
 
 # 2
-mkdir "$env:TEMP\installers" -Force
+mkdir "$env:TEMP\installers" -Force > $null
 cd "$env:TEMP\installers"
 
 Write-Host "Downloading program installers..." -ForegroundColor Yellow
@@ -43,24 +43,36 @@ Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?LinkId=2099617" -OutF
 Invoke-WebRequest -Uri "https://c2rsetup.officeapps.live.com/c2r/download.aspx?ProductreleaseID=Home2024Retail&platform=x64&language=ru-ru&version=O16GA" -OutFile "MSOffice.exe"
 Invoke-WebRequest -Uri "https://www.glenn.delahoy.com/downloads/sdio/SDIO_1.18.0.830.zip" -OutFile "SDIO.zip"
 
+Write-Host "extracting SDIO..." -ForegroundColor Cyan
 Expand-Archive -Path "SDIO.zip" -DestinationPath "$env:USERPROFILE\Downloads\SDIO" -Force
+Write-Host "Complete!" -ForegroundColor Green
 
 $ProgressPreference = 'Continue'
 
 Write-Host "Installing 7-Zip..." -ForegroundColor Cyan
 Start-Process -FilePath ".\7zip.exe" -ArgumentList "/S" -Wait
+Write-Host "Complete!" -ForegroundColor Green
+
 
 Write-Host "Installing VLC..." -ForegroundColor Cyan
 Start-Process -FilePath ".\vlc.exe" -ArgumentList "/S" -Wait
+Write-Host "Complete!" -ForegroundColor Green
+
 
 Write-Host "Installing Firefox..." -ForegroundColor Cyan
 Start-Process -FilePath ".\firefox.exe" -ArgumentList "/S" -Wait
+Write-Host "Complete!" -ForegroundColor Green
+
 
 Write-Host "Installing WebView2..." -ForegroundColor Cyan
 Start-Process -FilePath ".\webview2.exe" -ArgumentList "/silent /install" -Wait
+Write-Host "Complete!" -ForegroundColor Green
+
 
 Write-Host "Installing MS Office..." -ForegroundColor Cyan
 Start-Process -FilePath ".\MSOffice.exe" -Wait
+Write-Host "Complete!" -ForegroundColor Green
+
 
 cd "$env:TEMP"
 Remove-Item ".\installers" -Recurse -Force -ErrorAction SilentlyContinue
